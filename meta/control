@@ -1,0 +1,7 @@
+Package: enigma2-plugin-systemplugins-terrestrialbouquet
+Version: 0.1
+Description: Tool to create a terrestrial bouquet according to logical channel numbers
+Section: extra
+Priority: optional
+License: MIT
+Architecture: all

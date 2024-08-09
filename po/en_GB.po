@@ -1,0 +1,172 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-09 18:34+0200\n"
+"PO-Revision-Date: 2024-08-09 18:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/providers.py:12
+msgid "Adult"
+msgstr "Adult"
+
+#: ../src/providers.py:15
+msgid "Australia"
+msgstr "Australia"
+
+#: ../src/providers.py:11
+msgid "BBC Interactive"
+msgstr "BBC Interactive"
+
+#: ../src/plugin.py:152
+msgid "Build/rebuild terrestrial bouquet now based on the last scan."
+msgstr "Build/rebuild terrestrial bouquet now based on the last scan."
+
+#: ../src/providers.py:9
+msgid "Children"
+msgstr "Children"
+
+#: ../src/plugin.py:209
+msgid ""
+"Create an ordered bouquet of terrestrial services based on LCN data from "
+"your local transmitter."
+msgstr ""
+"Create an ordered bouquet of terrestrial services based on LCN data from "
+"your local transmitter."
+
+#: ../src/plugin.py:162
+msgid "Create separate radio bouquet"
+msgstr "Create separate radio bouquet"
+
+#: ../src/plugin.py:163
+msgid "Do not add duplicated or non indexed channels to the bouquet."
+msgstr "Do not add duplicated or non indexed channels to the bouquet."
+
+#: ../src/plugin.py:115
+msgid "Duplicates"
+msgstr "Duplicates"
+
+#: ../src/plugin.py:159
+msgid ""
+"Enable creating a terrestrial bouquet based on LCN (logocal channel number) "
+"data."
+msgstr ""
+"Enable creating a terrestrial bouquet based on LCN (logocal channel number) "
+"data."
+
+#: ../src/plugin.py:159
+msgid "Enable terrestrial bouquet"
+msgstr "Enable terrestrial bouquet"
+
+#: ../src/providers.py:7
+msgid "Entertainment"
+msgstr "Entertainment"
+
+#: ../src/providers.py:8
+msgid "High Definition"
+msgstr "High Definition"
+
+#: ../src/providers.py:10
+msgid "News"
+msgstr "News"
+
+#: ../src/plugin.py:78
+msgid "No corresponding terrestrial services found."
+msgstr "No corresponding terrestrial services found."
+
+#: ../src/plugin.py:159
+msgid ""
+"Once configured the bouquet will be updated automatically when doing a "
+"manual scan."
+msgstr ""
+"Once configured the bouquet will be updated automatically when doing a "
+"manual scan."
+
+#: ../src/plugin.py:11
+msgid "Other"
+msgstr "Other"
+
+#: ../src/plugin.py:162
+msgid ""
+"Put radio services in a separate bouquet, not the main tv bouquet. This is "
+"required when the provider duplicates channel numbers for tv and radio."
+msgstr ""
+"Put radio services in a separate bouquet, not the main tv bouquet. This is "
+"required when the provider duplicates channel numbers for tv and radio."
+
+#: ../src/providers.py:13
+msgid "Radio"
+msgstr "Radio"
+
+#: ../src/plugin.py:171
+msgid "Rebuild bouquet"
+msgstr "Rebuild bouquet"
+
+#: ../src/plugin.py:161
+msgid "Region"
+msgstr "Region"
+
+#: ../src/plugin.py:161
+msgid "Select your region."
+msgstr "Select your region."
+
+#: ../src/plugin.py:163
+msgid "Skip duplicates"
+msgstr "Skip duplicates"
+
+#: ../src/plugin.py:25
+msgid "Terrestrial"
+msgstr "Terrestrial"
+
+#: ../src/plugin.py:181 ../src/plugin.py:195 ../src/plugin.py:209
+msgid "Terrestrial Bouquet"
+msgstr "Terrestrial Bouquet"
+
+#: ../src/plugin.py:178
+msgid "Terrestrial Bouquet Error"
+msgstr "Terrestrial Bouquet Error"
+
+#: ../src/plugin.py:56
+msgid "Terrestrial Bouquet plugin is not enabled."
+msgstr "Terrestrial Bouquet plugin is not enabled."
+
+#: ../src/plugin.py:153
+msgid "Terrestrial Bouquet setup"
+msgstr "Terrestrial Bouquet setup"
+
+#: ../src/plugin.py:180
+msgid "Terrestrial bouquet successfully rebuilt."
+msgstr "Terrestrial bouquet successfully rebuilt."
+
+#: ../src/plugin.py:60
+msgid "There is currently no LCN data stored."
+msgstr "There is currently no LCN data stored."
+
+#: ../src/plugin.py:159
+msgid ""
+"This plugin depends on LCN data being broadcast by your local tansmitter."
+msgstr ""
+"This plugin depends on LCN data being broadcast by your local tansmitter."
+
+#: ../src/plugin.py:57
+msgid ""
+"Try running a manual scan of terrestrial frequencies. If this fails maybe "
+"there is no lcn data available in your area."
+msgstr ""
+"Try running a manual scan of terrestrial frequencies. If this fails maybe "
+"there is no lcn data available in your area."
+
+#: ../src/providers.py:4
+msgid "UK"
+msgstr "UK"
