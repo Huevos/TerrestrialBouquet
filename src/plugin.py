@@ -19,8 +19,6 @@ config.plugins.terrestrialbouquet.skipduplicates = ConfigYesNo(True)
 class TerrestrialBouquet:
 	def __init__(self):
 		self.config = config.plugins.terrestrialbouquet
-		self.path = "/etc/enigma2"
-		self.bouquetsIndexFilename = "bouquets.tv"
 		self.bouquetFilename = "userbouquet.TerrestrialBouquet.tv"
 		self.bouquetName = _('Terrestrial')
 		self.services = {}
@@ -78,72 +76,38 @@ class TerrestrialBouquet:
 			return _("No corresponding terrestrial services found.") + " " + msg
 		self.createBouquet()
 
-	def readBouquetIndex(self, mode):
-		try:  # may not exist
-			return open(self.path + "/%s%s" % (self.bouquetsIndexFilename[:-2], "tv" if mode == MODE_TV else "radio"), "r").read()
-		except Exception as e:  # noqa: F841
-			return ""
-
-	def writeBouquetIndex(self, bouquetIndexContent, mode):
-		bouquets_index_list = []
-		bouquets_index_list.append("#NAME Bouquets (%s)\n" % ("TV" if mode == MODE_TV else "Radio"))
-		bouquets_index_list.append("#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"%s%s\" ORDER BY bouquet\n" % (self.bouquetFilename[:-2], "tv" if mode == MODE_TV else "radio"))
-		if bouquetIndexContent:
-			lines = bouquetIndexContent.split("\n", 1)
-			if lines[0][:6] != "#NAME ":
-				bouquets_index_list.append("%s\n" % lines[0])
-			if len(lines) > 1:
-				bouquets_index_list.append("%s" % lines[1])
-		bouquets_index = open(self.path + "/" + self.bouquetsIndexFilename[:-2] + ("tv" if mode == MODE_TV else "radio"), "w")
-		bouquets_index.write(''.join(bouquets_index_list))
-		bouquets_index.close()
-
-	def writeBouquet(self, mode):
-		allowed_service_types = not self.config.makeradiobouquet.value and self.VIDEO_ALLOWED_TYPES + self.AUDIO_ALLOWED_TYPES or self.getAllowedTypes(mode)
-		lcnindex = {v["lcn"]: k for k, v in self.services.items() if not v.get("duplicate") and v.get("lcn") and v.get("type") in allowed_service_types}
-		highestLCN = max(list(lcnindex.keys()))
-		sections = providers[self.config.providers.value].get("sections", {})
-		active_sections = [max((x for x in list(sections.keys()) if int(x) <= key)) for key in list(lcnindex.keys())] if sections else []
-		if not self.config.skipduplicates.value and (duplicates := sorted([(k, v) for k, v in self.services.items() if v.get("duplicate") and v.get("type") in allowed_service_types], key=lambda x: x[1]["name"].lower())):
-			duplicate_range = {"lower": highestLCN + 1, "upper": 65535} | providers[self.config.providers.value].get("duplicates", {})
-			for i in range(duplicate_range["lower"], duplicate_range["upper"] + 1):
-				if i not in lcnindex:
-					duplicate = duplicates.pop(0)
-					lcnindex[i] = duplicate[0]
-					if not len(duplicates):
-						break
-			sections[duplicate_range["lower"]] = _("Duplicates")
-			active_sections.append(duplicate_range["lower"])
-			highestLCN = max(list(lcnindex.keys()))
-		bouquet_list = []
-		bouquet_list.append("#NAME %s\n" % providers[self.config.providers.value].get("bouquetname", self.bouquetName))
-		for number in range(1, (highestLCN) // 1000 * 1000 + 1001):   # ceil bouquet length to nearest 1000, range needs + 1
-			if mode == MODE_TV and number in active_sections:
-				bouquet_list.append(self.bouquetMarker(sections[number]))
-			if number in lcnindex:
-				bouquet_list.append(self.bouquetServiceLine(self.services[lcnindex[number]]))
-			else:
-				bouquet_list.append("#SERVICE 1:320:0:0:0:0:0:0:0:0:\n")  # bouquet spacer
-		bouquetFile = open(self.path + "/" + self.bouquetFilename[:-2] + ("tv" if mode == MODE_TV else "radio"), "w")
-		bouquetFile.write(''.join(bouquet_list))
-		bouquetFile.close()
-
-	def bouquetServiceLine(self, service):
-		return "#SERVICE 1:0:%x:%x:%x:%x:%x:0:0:0:\n" % (service["type"], service["sid"], service["tsid"], service["onid"], service["namespace"])
-
-	def bouquetMarker(self, text):
-		return "#SERVICE 1:64:0:0:0:0:0:0:0:0:\n#DESCRIPTION %s\n" % text
-
 	def createBouquet(self):
 		radio_services = [x for x in self.services.values() if x["type"] in self.AUDIO_ALLOWED_TYPES and "lcn" in x]
 		for mode in (MODE_TV, MODE_RADIO):
 			if mode == MODE_RADIO and (not radio_services or not self.config.makeradiobouquet.value):
 				break
-			bouquetIndexContent = self.readBouquetIndex(mode)
-			if '"' + self.bouquetFilename[:-2] + ("tv" if mode == MODE_TV else "radio") + '"' not in bouquetIndexContent:  # only edit the index if bouquet file is not present
-				self.writeBouquetIndex(bouquetIndexContent, mode)
-			self.writeBouquet(mode)
-		eDVBDB.getInstance().reloadBouquets()
+			allowed_service_types = not self.config.makeradiobouquet.value and self.VIDEO_ALLOWED_TYPES + self.AUDIO_ALLOWED_TYPES or self.getAllowedTypes(mode)
+			lcnindex = {v["lcn"]: k for k, v in self.services.items() if not v.get("duplicate") and v.get("lcn") and v.get("type") in allowed_service_types}
+			highestLCN = max(list(lcnindex.keys()))
+			sections = providers[self.config.providers.value].get("sections", {})
+			active_sections = [max((x for x in list(sections.keys()) if int(x) <= key)) for key in list(lcnindex.keys())] if sections else []
+			if not self.config.skipduplicates.value and (duplicates := sorted([(k, v) for k, v in self.services.items() if v.get("duplicate") and v.get("type") in allowed_service_types], key=lambda x: x[1]["name"].lower())):
+				duplicate_range = {"lower": highestLCN + 1, "upper": 65535} | providers[self.config.providers.value].get("duplicates", {})
+				for i in range(duplicate_range["lower"], duplicate_range["upper"] + 1):
+					if i not in lcnindex:
+						duplicate = duplicates.pop(0)
+						lcnindex[i] = duplicate[0]
+						if not len(duplicates):
+							break
+				sections[duplicate_range["lower"]] = _("Duplicates")
+				active_sections.append(duplicate_range["lower"])
+				highestLCN = max(list(lcnindex.keys()))
+			bouquet_name = providers[self.config.providers.value].get("bouquetname", self.bouquetName)
+			bouquet_list = []
+			for number in range(1, (highestLCN) // 1000 * 1000 + 1001):   # ceil bouquet length to nearest 1000, range needs + 1
+				if mode == MODE_TV and number in active_sections:
+					bouquet_list.append("1:64:0:0:0:0:0:0:0:0:%s" % sections[number])
+				if number in lcnindex:
+					service = self.services[lcnindex[number]]
+					bouquet_list.append("1:0:%x:%x:%x:%x:%x:0:0:0:" % (service["type"], service["sid"], service["tsid"], service["onid"], service["namespace"]))
+				else:
+					bouquet_list.append("1:320:0:0:0:0:0:0:0:0:")  # bouquet spacer
+			eDVBDB.getInstance().addOrUpdateBouquet(bouquet_name, self.bouquetFilename[:-2] + ("tv" if mode == MODE_TV else "radio"), bouquet_list, True)
 
 
 class PluginSetup(Setup, TerrestrialBouquet):
