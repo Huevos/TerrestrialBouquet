@@ -1,3 +1,6 @@
+# for localized messages
+from . import _
+
 from enigma import eDVBDB
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection
 from Plugins.Plugin import PluginDescriptor

@@ -1,3 +1,6 @@
+# for localized messages
+from . import _
+
 providers = {
 	"other": {},
 	"uk": {
