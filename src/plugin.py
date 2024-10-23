@@ -55,7 +55,7 @@ class TerrestrialBouquet:
 	def rebuild(self):
 		if not self.config.enabled.value:
 			return _("Terrestrial Bouquet plugin is not enabled.")
-		msg = _("Try running a manual scan of terrestrial frequencies. If this fails maybe there is no lcn data available in your area.")
+		msg = _("Try running a manual scan of terrestrial frequencies with network scan enabled. If this fails maybe there is no lcn data available in your area.")
 		self.services.clear()
 		if not (LCNs := self.readLcnDb()):
 			return (_("There is currently no LCN data stored.")) + " " + msg
@@ -123,7 +123,7 @@ class PluginSetup(Setup, TerrestrialBouquet):
 	def createSetup(self):
 		configlist = []
 		indent = "- "
-		configlist.append((_("Enable terrestrial bouquet"), self.config.enabled, _("Enable creating a terrestrial bouquet based on LCN (logocal channel number) data.") + " " + _("This plugin depends on LCN data being broadcast by your local tansmitter.") + " " + _("Once configured the bouquet will be updated automatically when doing a manual scan.")))
+		configlist.append((_("Enable terrestrial bouquet"), self.config.enabled, _("Enable creating a terrestrial bouquet based on LCN (logocal channel number) data.") + " " + _("This plugin depends on LCN data being broadcast by your local tansmitter.") + " " + _("Once configured the bouquet will be updated automatically when doing a manual scan.") + " " + _("Please make certain network search is enabled when scanning.")))
 		if self.config.enabled.value:
 			configlist.append((indent + _("Region"), self.config.providers, _("Select your region.")))
 			configlist.append((indent + _("Create separate radio bouquet"), self.config.makeradiobouquet, _("Put radio services in a separate bouquet, not the main tv bouquet. This is required when the provider duplicates channel numbers for tv and radio.")))
