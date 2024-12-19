@@ -1,0 +1,183 @@
+# Spanish translations for Terrestrial Bouquet package.
+# Copyright (C) 2024 @Huevos
+# This file is distributed under the same license as the Terrestrial Bouquet package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Terrestrial Bouquet\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 15:37+0100\n"
+"PO-Revision-Date: 2024-12-19 20:39+0100\n"
+"Last-Translator: Huevos\n"
+"Language-Team: Huevos\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#: ../src/providers.py:15
+msgid "Adult"
+msgstr "Adulto"
+
+#: ../src/providers.py:23
+msgid "Australia"
+msgstr "Australia"
+
+#: ../src/providers.py:14
+msgid "BBC Interactive"
+msgstr "BBC Interactive"
+
+#: ../src/plugin.py:119
+msgid "Build/rebuild terrestrial bouquet now based on the last scan."
+msgstr ""
+"Ahora se genera/regenera el grupo terrestre basándose en el último escaneo."
+
+#: ../src/providers.py:12
+msgid "Children"
+msgstr "Niños"
+
+#: ../src/plugin.py:177
+msgid ""
+"Create an ordered bouquet of terrestrial services based on LCN data from "
+"your local transmitter."
+msgstr ""
+"Cree un grupo ordenado de servicios terrestres basado en datos LCN de su "
+"transmisor local."
+
+#: ../src/plugin.py:129
+msgid "Create separate radio bouquet"
+msgstr "Crear un grupo separado de radio"
+
+#: ../src/plugin.py:130
+msgid "Do not add duplicated or non indexed channels to the bouquet."
+msgstr "No añade canales duplicados o no indexados al grupo."
+
+#: ../src/plugin.py:100
+msgid "Duplicates"
+msgstr "Duplicados"
+
+#: ../src/plugin.py:126
+msgid ""
+"Enable creating a terrestrial bouquet based on LCN (logocal channel number) "
+"data."
+msgstr ""
+"Habilitar la creación de un grupo terrestre basado en datos LCN (número de "
+"canal lógico)."
+
+#: ../src/plugin.py:126
+msgid "Enable terrestrial bouquet"
+msgstr "Habilitar grupo terrestre"
+
+#: ../src/providers.py:10 ../src/providers.py:20
+msgid "Entertainment"
+msgstr "Entretenimiento"
+
+#: ../src/providers.py:11
+msgid "High Definition"
+msgstr "Alta Definición"
+
+#: ../src/providers.py:18
+msgid "Italy"
+msgstr "Italia"
+
+#: ../src/providers.py:13
+msgid "News"
+msgstr "Noticias"
+
+#: ../src/plugin.py:79
+msgid "No corresponding terrestrial services found."
+msgstr "No se encontraron ningún canal terrestre correspondiente."
+
+#: ../src/plugin.py:126
+msgid ""
+"Once configured the bouquet will be updated automatically when doing a "
+"manual scan."
+msgstr ""
+"Una vez configurado, el grupo se actualizará automáticamente al realizar un "
+"escaneo manual."
+
+#: ../src/plugin.py:14
+msgid "Other"
+msgstr "Otro"
+
+#: ../src/plugin.py:126
+msgid "Please make certain network search is enabled when scanning."
+msgstr "Asegúrese de que 'Escanear red' esté habilitada mientras escaneando."
+
+#: ../src/plugin.py:129
+msgid ""
+"Put radio services in a separate bouquet, not the main tv bouquet. This is "
+"required when the provider duplicates channel numbers for tv and radio."
+msgstr ""
+"Coloque los servicios de radio en un grupo separado, no en el grupo "
+"principal de TV. Esto es necesario cuando el proveedor duplica los números "
+"de canal para TV y radio."
+
+#: ../src/providers.py:16 ../src/providers.py:21
+msgid "Radio"
+msgstr "Radio"
+
+#: ../src/plugin.py:138
+msgid "Rebuild bouquet"
+msgstr "Regenerar grupo"
+
+#: ../src/plugin.py:128
+msgid "Region"
+msgstr "Región"
+
+#: ../src/plugin.py:128
+msgid "Select your region."
+msgstr "Seleccionar región"
+
+#: ../src/plugin.py:130
+msgid "Skip duplicates"
+msgstr "Omitir duplicados"
+
+#: ../src/plugin.py:26
+msgid "Terrestrial"
+msgstr "Terrestre"
+
+#: ../src/plugin.py:148 ../src/plugin.py:162 ../src/plugin.py:177
+msgid "Terrestrial Bouquet"
+msgstr "Grupo Terrestre"
+
+#: ../src/plugin.py:145
+msgid "Terrestrial Bouquet Error"
+msgstr "Error de Grupo Terrestre"
+
+#: ../src/plugin.py:57
+msgid "Terrestrial Bouquet plugin is not enabled."
+msgstr "El complemento Grupo Terrestre no está habilitado."
+
+#: ../src/plugin.py:120
+msgid "Terrestrial Bouquet setup"
+msgstr "Configuración de Grupo Terrestre"
+
+#: ../src/plugin.py:147
+msgid "Terrestrial bouquet successfully rebuilt."
+msgstr "Grupo terrestre regenerado con éxito."
+
+#: ../src/plugin.py:61
+msgid "There is currently no LCN data stored."
+msgstr "Actualmente no hay datos LCN almacenados."
+
+#: ../src/plugin.py:126
+msgid ""
+"This plugin depends on LCN data being broadcast by your local tansmitter."
+msgstr ""
+"Este complemento depende de los datos LCN que transmite su emisor local."
+
+#: ../src/plugin.py:58
+msgid ""
+"Try running a manual scan of terrestrial frequencies with network scan "
+"enabled. If this fails maybe there is no lcn data available in your area."
+msgstr ""
+"Intente ejecutar un escaneo manual de frecuencias terrestres con el escaneo "
+"de red habilitado. Si esto falla, es posible que no haya datos de LCN "
+"disponibles en su área."
+
+#: ../src/providers.py:7
+msgid "UK"
+msgstr "Reino Unido"
